@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Folder {
+  id    Int         @id @default(autoincrement())
+  title String
+  notes Component[]
+}
+
+model Component {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+  code        String
+  folder      Folder? @relation(fields: [folderId], references: [id])
+  folderId    Int?
+}
+
+model Svg {
+  id    Int    @id @default(autoincrement())
+  title String
+  code  String
+}
+
+model NoteFolder {
+  id              Int          @id @default(autoincrement())
+  title           String       @unique
+  notes           Note[]
+  folders         NoteFolder[] @relation("NoteFolder")
+  foldersRelation NoteFolder[] @relation("NoteFolder")
+}
+
+model Note {
+  id           Int         @id @default(autoincrement())
+  title        String      @unique
+  description  String?
+  content      String
+  noteFolder   NoteFolder? @relation(fields: [noteFolderId], references: [id])
+  noteFolderId Int?
+}
