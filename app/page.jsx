@@ -1,9 +1,9 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-export default function Home() {
+const page = () => {
   return (
-    <main>
-      <Link href={'/Notes/home'}>note link</Link>
-    </main>
+    <Link href={'/Notes/HomeFolder'}>Notes</Link>
   )
 }
+
+export default page
