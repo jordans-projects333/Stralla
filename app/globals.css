@@ -7,3 +7,57 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.gridNotes, .gridComponent{
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-auto-rows: min-content;
+}
+
+.gridSvg{
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  grid-auto-rows: min-content;
+}
+
+.gridFont{
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: min-content;
+}
+
+.textCutoff{
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.filterRed:hover{
+  filter: invert(19%) sepia(40%) saturate(7483%) hue-rotate(353deg) brightness(95%) contrast(124%);
+  -webkit-filter: invert(19%) sepia(40%) saturate(7483%) hue-rotate(353deg) brightness(95%) contrast(124%);
+}
+@keyframes fadeIntro {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
+.fadeIntro{
+  animation: fadeIntro .5s linear forwards;
+}
+
+@keyframes grow {
+  0%{
+    scale: 0;
+  }
+  100%{
+    scale: 1;
+  }
+}
+
+
+.growIntro{
+  animation: grow .2s linear forwards;
+}

@@ -1,5 +1,18 @@
 import './globals.css'
 import Providers from '@/reactQuery/Providers'
+import Header from './components/Header'
+import { Roboto, EB_Garamond, Bodoni_Moda, Open_Sans, Lato, Montserrat, Prompt, Slabo_27px, Playfair_Display, Cinzel, Italianno } from '@next/font/google'
+const italianno = Italianno({subsets: ['latin'], weight: '400', variable: "--italianno-font"})
+const roboto = Roboto({subsets: ['latin'], weight: '400', variable: "--roboto-font"})
+const ebGaramond = EB_Garamond({subsets: ['latin'], weight: '400', variable: "--ebGaramond-font"})
+const bodoniModa = Bodoni_Moda({subsets: ['latin'], weight: '400', variable: "--bodoniModa-font"})
+const openSans = Open_Sans({subsets: ['latin'], weight: '400', variable: "--openSans-font"})
+const lato = Lato({subsets: ['latin'], weight: '400', variable: "--lato-font"})
+const montserrat = Montserrat({subsets: ['latin'], weight: '400', variable: "--montserrat-font"})
+const prompt = Prompt({subsets: ['latin'], weight: '400', variable: "--prompt-font"})
+const slabo = Slabo_27px({subsets: ['latin'], weight: '400', variable: "--slabo-font"})
+const playfairDisplay = Playfair_Display({subsets: ['latin'], weight: '400', variable: "--playfairDisplay-font"})
+const cinzel = Cinzel({subsets: ['latin'], weight: '400', variable: "--cinzel-font"})
 
 export const metadata = {
   title: 'Create Next App',
@@ -8,10 +21,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${italianno.variable} ${roboto.variable} ${ebGaramond.variable} ${bodoniModa.variable} ${bodoniModa.variable} ${openSans.variable} 
+                     ${lato.variable} ${montserrat.variable} ${prompt.variable} ${slabo.variable} ${playfairDisplay.variable} ${cinzel.variable} ${italianno.variable}`}>
+      <body className='flex flex-col h-[100vh]'>
         <Providers>
-          {children}
+          <Header/>
+          <div className="flex flex-1 min-h-0 flex-nowrap relative">
+            <div className="absolute top-0 w-full h-full backdrop-blur-3xl -z-10"></div>
+            <div className="flex items-stretch w-[0rem] border"></div>
+            <div className="absolute w-[20%] aspect-square bg-blue-300 top-[30%] left-[60%] -z-20"></div>
+            <div className="absolute w-[5%] aspect-square bg-blue-300 top-[0%] left-[0%] -z-20"></div>
+            {children}
+          </div>
         </Providers>
       </body>
     </html>

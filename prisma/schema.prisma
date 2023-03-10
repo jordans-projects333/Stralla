@@ -7,19 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Folder {
-  id    Int         @id @default(autoincrement())
-  title String
-  notes Component[]
+model ComponentFolder {
+  id                       Int               @id @default(autoincrement())
+  title                    String            @unique
+  Components               Component[]
+  ComponentFolders         ComponentFolder[] @relation("ComponentFolder")
+  ComponentFoldersRelation ComponentFolder[] @relation("ComponentFolder")
 }
 
 model Component {
-  id          Int     @id @default(autoincrement())
-  title       String
-  description String?
-  code        String
-  folder      Folder? @relation(fields: [folderId], references: [id])
-  folderId    Int?
+  id                Int              @id @default(autoincrement())
+  title             String           @unique
+  description       String?
+  content           String?
+  ComponentFolder   ComponentFolder? @relation(fields: [ComponentFolderid], references: [id])
+  ComponentFolderid Int?
 }
 
 model Svg {
@@ -40,7 +42,7 @@ model Note {
   id           Int         @id @default(autoincrement())
   title        String      @unique
   description  String?
-  content      String
+  content      String?
   noteFolder   NoteFolder? @relation(fields: [noteFolderId], references: [id])
   noteFolderId Int?
 }
